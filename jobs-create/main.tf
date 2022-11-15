@@ -5,6 +5,7 @@ resource "jenkins_folder" "folder" {
 }
 
 resource "jenkins_job" "infra-jobs" {
+  depends_on = [jenkins_folder.folder]
   count = length(var.infra-jobs)
   name  = element(var.infra-jobs, count.index)
   folder = "infrastructure"
