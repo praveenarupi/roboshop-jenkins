@@ -11,3 +11,9 @@ terraform {
     }
   }
 }
+
+resource "jenkins_folder" "folder" {
+  count = length(var.folders)
+  name = element(var.folders, count.index)
+  description = element(var.folders, count.index)
+}
