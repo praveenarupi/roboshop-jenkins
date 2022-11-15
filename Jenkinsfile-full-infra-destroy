@@ -6,7 +6,7 @@ pipeline {
     }
 
     stages {
-        
+
         stage('VPC & DB') {
             steps {
                 dir('vpc-n-db') {
@@ -22,6 +22,10 @@ pipeline {
 
 
     }
-
+    post {
+        always {
+            cleanWs()
+        }
+    }
 
 }
