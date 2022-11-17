@@ -7,13 +7,13 @@ def call() {
         }
 
         stages {
-            stage('Download Dependencies') { }
-              steps {
-                  sh ''' 
+            stage('Download Dependencies') {
+            steps {
+                sh ''' 
                     npm install                    
                   '''
-              }
-
+            }
+            }
         }
         post {
             always {
