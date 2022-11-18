@@ -1,8 +1,6 @@
 def call() {
     node() {
 
-        stages {
-
             stage('Download Dependencies') {
                 sh ''' 
                     npm install                    
@@ -27,6 +25,4 @@ def call() {
                 cleanWs()
             }
         }
-    }
-
 }
