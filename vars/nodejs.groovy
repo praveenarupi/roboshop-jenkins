@@ -7,17 +7,17 @@ def call() {
            '''
         }
 
-            common.SonarCheck()
+         common.SonarCheck()
 
-//            stage('Make Release - Upload Artifacts') {
-//                when {
-//                        expression { env.TAG_NAME ==~ ".*" }
-//                }
-//                steps {
-//                    sh '''
-//                    echo artifacts
-//                  '''
-//                }
+//         stage('Make Release - Upload Artifacts') {
+//            when {
+//                expression { env.TAG_NAME ==~ ".*" }
 //            }
-        }
+//           steps {
+//              sh '''
+//               echo artifacts
+//               '''
+//             }
+//          }
+    }
 }
