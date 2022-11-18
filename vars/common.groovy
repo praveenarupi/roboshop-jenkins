@@ -9,3 +9,10 @@ def SonarCheck() {
       }
     }
 }
+
+def CodeCheckout() {
+    stage('Checkout Code') {
+        sh 'rm -rf *'
+        git branch: 'main', url: "https://github.com/praveenarupi/${env.COMPONENT}"
+    }
+}

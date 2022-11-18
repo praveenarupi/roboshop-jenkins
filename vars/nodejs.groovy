@@ -1,9 +1,6 @@
 def call() {
     node() {
-
-        stage('Checkout Code') {
-            sh ''
-        }
+        common.CodeCheckout()
         stage('Download Dependencies') {
           sh ''' 
             npm install                    
