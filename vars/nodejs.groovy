@@ -28,7 +28,7 @@ def call() {
                 }
                 steps {
                     sh ''' 
-                    sonar-scanner -Dsonar.host.url=http://172.31.76.87:9000 -Dsonar.login=${SONAR_USR} -D sonar.password=${SONAR_PSW} -Dsonar.projectKey=${COMPONENT} -Dsonar-qualitygate.wait=true              
+                    sonar-scanner -Dsonar.host.url=http://172.31.76.87:9000 -Dsonar.login=${SONAR_USR} -Dsonar.password=${SONAR_PSW} -Dsonar.projectKey=${COMPONENT} -Dsonar.qualitygate.wait=true
                   '''
                 }
             }
