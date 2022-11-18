@@ -7,15 +7,6 @@ def call() {
         }
 
         stages {
-
-            stage('Download Dependencies') {
-            steps {
-                sh ''' 
-                    npm install                    
-                  '''
-            }
-            }
-
             common.SonarCheck()
 
             stage('Make Release - Upload Artifacts') {
