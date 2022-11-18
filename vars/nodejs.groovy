@@ -1,4 +1,5 @@
 def call() {
+    env.SONAR_JAVA_PROPERTY = ""
     node() {
         common.CodeCheckout()
         stage('Download Dependencies') {
