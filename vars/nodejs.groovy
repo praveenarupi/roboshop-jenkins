@@ -1,11 +1,14 @@
 def call() {
     node() {
 
-            stage('Download Dependencies') {
-                sh ''' 
-                    npm install                    
-                  '''
-            }
+        stage('Checkout Code') {
+            sh ''
+        }
+        stage('Download Dependencies') {
+          sh ''' 
+            npm install                    
+           '''
+        }
 
             common.SonarCheck()
 
@@ -19,10 +22,5 @@ def call() {
 //                  '''
 //                }
 //            }
-        }
-        post {
-            always {
-                cleanWs()
-            }
         }
 }
