@@ -1,4 +1,5 @@
 def call() {
+    env.SONAR_JAVA_PROPERTY = "-Dsonar.java.binaries=./target"
     node() {
         common.CodeCheckout()
         stage('Download Dependencies') {
