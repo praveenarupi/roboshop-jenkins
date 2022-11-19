@@ -1,5 +1,5 @@
 def SonarCheck() {
-    if (env.BRANCH_NAME == "main") {
+    if (env.BRANCH_NAME == "main" || env.TAG_NAME ==~ ".*") {
         stage('Code Quality') {
             withCredentials([usernamePassword(credentialsId: 'SONAR', passwordVariable: 'SONAR_PSW', usernameVariable: 'SONAR_USR')]) {
                 sh ''' 
@@ -16,4 +16,16 @@ def CodeCheckout() {
         sh 'rm -rf *'
         git branch: 'main', url: "https://github.com/praveenarupi/${env.COMPONENT}"
     }
+}
+
+def UploadArtifact() {
+    if (env.TAG_NAME ==~ ".*")
+        stage('Make release - Upload Artifact') {
+           // Prepare Artifacts
+           if (env.APP_TYPE == "node") {
+              sh '''
+               zip -r ${COMPONENT}-${TAG_NAME}.zip node_modules server.js
+              '''
+            }
+        }
 }
