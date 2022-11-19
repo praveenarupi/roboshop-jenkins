@@ -1,4 +1,7 @@
 def call() {
+    if(!env.terraPath) {
+        env.terraPath = "mutable"
+    }
     pipeline {
         agent any
 
@@ -14,7 +17,7 @@ def call() {
             stage('Terraform Apply') {
                 steps {
                     sh '''
-                  cd mutable
+                  cd ${terraPath}
                   terrafile
                   terraform init -backend-config=env/${ENV}-backend.tfvars
                   terraform apply -auto-approve -var-file=env/${ENV}.tfvars
