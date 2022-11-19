@@ -27,6 +27,25 @@ def UploadArtifact() {
                zip -r ${COMPONENT}-${TAG_NAME}.zip node_modules server.js
               '''
             }
+            if (env.APP_TYPE == "java") {
+                sh '''
+          mv target/${COMPONENT}-1.0.jar ${COMPONENT}.jar
+          zip -r ${COMPONENT}-${TAG_NAME}.zip ${COMPONENT}.jar
+        '''
+            }
+
+            if (env.APP_TYPE == "python") {
+                sh '''
+          zip -r ${COMPONENT}-${TAG_NAME}.zip requirements.txt *.py *.ini
+        '''
+            }
+
+            if (env.APP_TYPE == "nginx") {
+                sh '''
+          cd static
+          zip -r ../${COMPONENT}-${TAG_NAME}.zip *
+        '''
+            }
             //Upload Artifacts
             withCredentials([usernamePassword(credentialsId: 'NEXUS', passwordVariable: 'NEXUS_PSW', usernameVariable: 'NEXUS_USR')]) {
                 sh ''' 
