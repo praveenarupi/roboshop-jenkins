@@ -10,7 +10,7 @@ pipeline {
         stage('VPC & DB') {
             steps {
                 dir('vpc-n-db') {
-                    git branch: 'main', url: 'https://github.com/praveenarupi/terraform-mutable-infra.git'
+                    git branch: 'main', url: 'https://github.com/praveenarupi/terraform-immutable-infra.git'
                     sh '''
             terrafile 
             terraform init -backend-config=env/prod-backend.tfvars
@@ -28,7 +28,7 @@ pipeline {
                         dir('cart') {
                             git branch: 'main', url: 'https://github.com/praveenarupi/cart-infra.git'
                             sh '''
-            cd  mutable
+            cd  immutable
             terrafile 
             terraform init -backend-config=env/prod-backend.tfvars
             terraform apply -auto-approve -var-file=env/prod.tfvars  
@@ -42,7 +42,7 @@ pipeline {
                         dir('catalogue') {
                             git branch: 'main', url: 'https://github.com/praveenarupi/catalogue-infra.git'
                             sh '''
-            cd  mutable
+            cd  immutable
             terrafile 
             terraform init -backend-config=env/prod-backend.tfvars
             terraform apply -auto-approve -var-file=env/prod.tfvars 
@@ -56,7 +56,7 @@ pipeline {
                         dir('user') {
                             git branch: 'main', url: 'https://github.com/praveenarupi/user-infra.git'
                             sh '''
-            cd  mutable
+            cd  immutable
             terrafile 
             terraform init -backend-config=env/prod-backend.tfvars
             terraform apply -auto-approve -var-file=env/prod.tfvars 
@@ -70,7 +70,7 @@ pipeline {
                         dir('shipping') {
                             git branch: 'main', url: 'https://github.com/praveenarupi/shipping-infra.git'
                             sh '''
-            cd  mutable
+            cd  immutable
             terrafile 
             terraform init -backend-config=env/prod-backend.tfvars
             terraform apply -auto-approve -var-file=env/prod.tfvars 
@@ -84,7 +84,7 @@ pipeline {
                         dir('payment') {
                             git branch: 'main', url: 'https://github.com/praveenarupi/payment-infra.git'
                             sh '''
-            cd  mutable
+            cd  immutable
             terrafile 
             terraform init -backend-config=env/prod-backend.tfvars
             terraform apply -auto-approve -var-file=env/prod.tfvars 
@@ -103,7 +103,7 @@ pipeline {
                 dir('frontend') {
                     git branch: 'main', url: 'https://github.com/praveenarupi/frontend-infra.git'
                     sh '''
-            cd  mutable
+            cd  immutable
             terrafile 
             terraform init -backend-config=env/prod-backend.tfvars
             terraform apply -auto-approve -var-file=env/prod.tfvars 
