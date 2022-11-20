@@ -9,7 +9,9 @@ def call() {
         }
 
          common.SonarCheck()
-         common.UploadArtifact()
-         common.makeAMI()
+        if (env.TAG_NAME ==~ ".*") {
+            common.UploadArtifact()
+            common.makeAMI()
+        }
     }
 }

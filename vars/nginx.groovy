@@ -3,7 +3,9 @@ def call() {
     node() {
         common.CodeCheckout()
         common.SonarCheck()
-        common.UploadArtifact()
-        common.makeAMI()
+        if (env.TAG_NAME ==~ ".*") {
+            common.UploadArtifact()
+            common.makeAMI()
+        }
     }
 }
