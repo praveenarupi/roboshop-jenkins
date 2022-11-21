@@ -1,6 +1,6 @@
 def call() {
     if(!env.terraPath) {
-        env.terraPath = "mutable"
+        env.terraPath = "immutable"
     }
     pipeline {
         agent any
@@ -11,6 +11,7 @@ def call() {
 
         parameters {
             choice(name: 'ENV', choices: ['', 'dev', 'prod'], description: 'Pick Env')
+            string(name: 'APP_VERSION', defaultValue: '2.0.0', description: 'APP_VERSION')
         }
 
         stages {
@@ -20,7 +21,7 @@ def call() {
                   cd ${terraPath}
                   terrafile
                   terraform init -backend-config=env/${ENV}-backend.tfvars
-                  terraform apply -auto-approve -var-file=env/${ENV}.tfvars
+                  terraform apply -auto-approve -var-file=env/${ENV}.tfvars -var APP_VERSION=${APP_VERSION}
             '''
                 }
             }
