@@ -10,7 +10,7 @@ pipeline {
         stage('Frontend') {
             steps {
                 dir('frontend') {
-                    git branch: 'main', url: 'https://github.com/praveenarupi/frontend-infra.git'
+                    git branch: 'main', url: 'https://github.com/praveenarupi/frontend-infra.git' -var APP_VERSION=2.0.0 || true
                     sh '''
             cd mutable
             terrafile 
