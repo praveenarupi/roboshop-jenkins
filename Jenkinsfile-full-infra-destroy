@@ -10,12 +10,12 @@ pipeline {
         stage('Frontend') {
             steps {
                 dir('frontend') {
-                    git branch: 'main', url: 'https://github.com/praveenarupi/frontend-infra.git' -var APP_VERSION=2.0.0 || true
+                    git branch: 'main', url: 'https://github.com/praveenarupi/frontend-infra.git'
                     sh '''
-            cd mutable
+            cd immutable
             terrafile 
             terraform init -backend-config=env/prod-backend.tfvars
-            terraform destroy -auto-approve -var-file=env/prod.tfvars  
+            terraform destroy -auto-approve -var-file=env/prod.tfvars -var APP_VERSION=2.0.0 || true
           '''
                 }
             }
@@ -27,12 +27,12 @@ pipeline {
                 stage('Cart') {
                     steps {
                         dir('cart') {
-                            git branch: 'main', url: 'https://github.com/praveenarupi/cart-infra.git' -var APP_VERSION=2.0.0
+                            git branch: 'main', url: 'https://github.com/praveenarupi/cart-infra.git'
                             sh '''
-            cd mutable
+            cd immutable
             terrafile 
             terraform init -backend-config=env/prod-backend.tfvars
-            terraform destroy -auto-approve -var-file=env/prod.tfvars 
+            terraform destroy -auto-approve -var-file=env/prod.tfvars -var APP_VERSION=2.0.0
           '''
                         }
                     }
@@ -41,12 +41,12 @@ pipeline {
                 stage('Catalogue') {
                     steps {
                         dir('catalogue') {
-                            git branch: 'main', url: 'https://github.com/praveenarupi/catalogue-infra.git' -var APP_VERSION=2.0.0
+                            git branch: 'main', url: 'https://github.com/praveenarupi/catalogue-infra.git'
                             sh '''
-            cd mutable
+            cd immutable
             terrafile 
             terraform init -backend-config=env/prod-backend.tfvars
-            terraform destroy -auto-approve -var-file=env/prod.tfvars 
+            terraform destroy -auto-approve -var-file=env/prod.tfvars -var APP_VERSION=2.0.0
           '''
                         }
                     }
@@ -55,12 +55,12 @@ pipeline {
                 stage('User') {
                     steps {
                         dir('user') {
-                            git branch: 'main', url: 'https://github.com/praveenarupi/user-infra.git' -var APP_VERSION=2.0.0
+                            git branch: 'main', url: 'https://github.com/praveenarupi/user-infra.git'
                             sh '''
-            cd mutable
+            cd immutable
             terrafile 
             terraform init -backend-config=env/prod-backend.tfvars
-            terraform destroy -auto-approve -var-file=env/prod.tfvars 
+            terraform destroy -auto-approve -var-file=env/prod.tfvars -var APP_VERSION=2.0.0
           '''
                         }
                     }
@@ -69,12 +69,12 @@ pipeline {
                 stage('Shipping') {
                     steps {
                         dir('shipping') {
-                            git branch: 'main', url: 'https://github.com/praveenarupi/shipping-infra.git' -var APP_VERSION=2.0.0
+                            git branch: 'main', url: 'https://github.com/praveenarupi/shipping-infra.git'
                             sh '''
-            cd mutable
+            cd immutable
             terrafile 
             terraform init -backend-config=env/prod-backend.tfvars
-            terraform destroy -auto-approve -var-file=env/prod.tfvars 
+            terraform destroy -auto-approve -var-file=env/prod.tfvars -var APP_VERSION=2.0.1
           '''
                         }
                     }
@@ -83,12 +83,12 @@ pipeline {
                 stage('Payment') {
                     steps {
                         dir('payment') {
-                            git branch: 'main', url: 'https://github.com/praveenarupi/payment-infra.git' -var APP_VERSION=2.0.0
+                            git branch: 'main', url: 'https://github.com/praveenarupi/payment-infra.git'
                             sh '''
-            cd mutable
+            cd immutable
             terrafile 
             terraform init -backend-config=env/prod-backend.tfvars
-            terraform destroy -auto-approve -var-file=env/prod.tfvars 
+            terraform destroy -auto-approve -var-file=env/prod.tfvars -var APP_VERSION=2.0.0
           '''
                         }
                     }
