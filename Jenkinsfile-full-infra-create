@@ -10,7 +10,7 @@ pipeline {
         stage('VPC & DB') {
             steps {
                 dir('vpc-n-db') {
-                    git branch: 'main', url: 'https://github.com/praveenarupi/terraform-immutable-infra.git'
+                    git branch: 'main', url: 'https://github.com/praveenarupi/terraform-mutable-infra.git'
                     sh '''
             terrafile 
             terraform init -backend-config=env/prod-backend.tfvars
