@@ -27,7 +27,7 @@ pipeline {
                 stage('Cart') {
                     steps {
                         dir('cart') {
-                            git branch: 'main', url: 'https://github.com/praveenarupi/cart-infra.git'
+                            git branch: 'main', url: 'https://github.com/praveenarupi/cart-infra.git' -var APP_VERSION=2.0.0
                             sh '''
             cd mutable
             terrafile 
@@ -41,7 +41,7 @@ pipeline {
                 stage('Catalogue') {
                     steps {
                         dir('catalogue') {
-                            git branch: 'main', url: 'https://github.com/praveenarupi/catalogue-infra.git'
+                            git branch: 'main', url: 'https://github.com/praveenarupi/catalogue-infra.git' -var APP_VERSION=2.0.0
                             sh '''
             cd mutable
             terrafile 
@@ -55,7 +55,7 @@ pipeline {
                 stage('User') {
                     steps {
                         dir('user') {
-                            git branch: 'main', url: 'https://github.com/praveenarupi/user-infra.git'
+                            git branch: 'main', url: 'https://github.com/praveenarupi/user-infra.git' -var APP_VERSION=2.0.0
                             sh '''
             cd mutable
             terrafile 
@@ -69,7 +69,7 @@ pipeline {
                 stage('Shipping') {
                     steps {
                         dir('shipping') {
-                            git branch: 'main', url: 'https://github.com/praveenarupi/shipping-infra.git'
+                            git branch: 'main', url: 'https://github.com/praveenarupi/shipping-infra.git' -var APP_VERSION=2.0.0
                             sh '''
             cd mutable
             terrafile 
@@ -83,7 +83,7 @@ pipeline {
                 stage('Payment') {
                     steps {
                         dir('payment') {
-                            git branch: 'main', url: 'https://github.com/praveenarupi/payment-infra.git'
+                            git branch: 'main', url: 'https://github.com/praveenarupi/payment-infra.git' -var APP_VERSION=2.0.0
                             sh '''
             cd mutable
             terrafile 
