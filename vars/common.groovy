@@ -73,7 +73,9 @@ def dockerImage() {
     ansiColor('xterm') {
         stage('Build Docker Image') {
             sh '''
-        docker build .
+        docker build -t 209344285891.dkr.ecr.us-east-1.amazonaws.com/${COMPONENT}:${TAG_NAME} .
+        aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 209344285891.dkr.ecr.us-east-1.amazonaws.com
+        docker push 209344285891.dkr.ecr.us-east-1.amazonaws.com/${COMPONENT}:${TAG_NAME}
       '''
         }
     }
